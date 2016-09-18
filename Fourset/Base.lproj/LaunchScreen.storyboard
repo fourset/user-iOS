@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_background" translatesAutoresizingMaskIntoConstraints="NO" id="aY2-1c-WbK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_logo" translatesAutoresizingMaskIntoConstraints="NO" id="J94-FG-1M2">
+                                <rect key="frame" x="212" y="190" width="177" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="FaR-MZ-P5q"/>
+                                    <constraint firstAttribute="width" constant="177" id="vxI-iC-fTN"/>
+                                    <constraint firstAttribute="width" secondItem="J94-FG-1M2" secondAttribute="height" multiplier="30:7" id="y7O-w1-16h"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="y7O-w1-16h"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aY2-1c-WbK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="647-WO-XAM"/>
+                            <constraint firstItem="J94-FG-1M2" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="1:2" id="6DC-Dn-oD0"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="J94-FG-1M2" secondAttribute="bottom" multiplier="11:4" id="8p3-OE-six"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="aY2-1c-WbK" secondAttribute="bottom" id="a5C-ZR-j43"/>
+                            <constraint firstItem="aY2-1c-WbK" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="hlX-P8-jqj"/>
+                            <constraint firstAttribute="trailing" secondItem="aY2-1c-WbK" secondAttribute="trailing" id="uK7-A3-2Yc"/>
+                            <constraint firstItem="J94-FG-1M2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yjJ-C5-65p"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6DC-Dn-oD0"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home_background" width="375" height="667"/>
+        <image name="home_logo" width="177" height="28"/>
+    </resources>
+</document>
