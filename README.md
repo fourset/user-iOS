@@ -18,7 +18,7 @@ Make sure you have the Cocoapods you need:
 
 Open the project in Xcode:
 
-open Fourset.xcworkspace
+    open Fourset.xcworkspace
 
 You may then build, run, and modify the code as usual in XCode.
 
