@@ -1,5 +1,3 @@
-# Fourset-iOS
-
 Fourset-iOS
 ========
 
@@ -10,13 +8,13 @@ Pre-requisites: recent version of Mac OS with XCode installed
 
 At the the terminal prompt, clone this repo onto your local machine:
 
-git clone https://github.com/fourset/user-iOS.git
+    git clone https://github.com/fourset/user-iOS.git
 
 Make sure you have the Cocoapods you need:
 
-cd user-iOS
-pod repo update
-pod install
+    cd user-iOS
+    pod repo update
+    pod install
 
 Open the project in Xcode:
 
