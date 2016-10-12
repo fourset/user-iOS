@@ -133,7 +133,7 @@
 
     [[GMSGeocoder geocoder] reverseGeocodeCoordinate:currentUserLocation.coordinate completionHandler:
      ^(GMSReverseGeocodeResponse *response, NSError *error){
-         NSString * address  = [response.firstResult.lines componentsJoinedByString:@","];
+         NSString * address  = [response.firstResult.lines componentsJoinedByString:@", "];
          [_searchTextField setText:address];
          
      }];
