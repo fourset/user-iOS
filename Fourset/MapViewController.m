@@ -121,16 +121,22 @@
 
 - (void) updateSearchField
 {
-    [_searchTextField setText:@"Getting the localtion..."];
-    CLGeocoder *ceo = [[CLGeocoder alloc]init];
-    [ceo reverseGeocodeLocation:currentUserLocation
-              completionHandler:^(NSArray *placemarks, NSError *error) {
-                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
-                  [_searchTextField setText:locatedAt];
-              }
-     ];
+    [_searchTextField setText:@"Getting the location..."];
+    //CLGeocoder *ceo = [[CLGeocoder alloc]init];
+//    [ceo reverseGeocodeLocation:currentUserLocation
+//              completionHandler:^(NSArray *placemarks, NSError *error) {
+//                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
+//                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+//                  [_searchTextField setText:locatedAt];
+//              }
+//     ];
 
+    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:currentUserLocation.coordinate completionHandler:
+     ^(GMSReverseGeocodeResponse *response, NSError *error){
+         NSString * address  = [response.firstResult.lines componentsJoinedByString:@","];
+         [_searchTextField setText:address];
+         
+     }];
 }
 
 - (void)addPins:(float)lat andLng:(float)lng andName:(NSString*)strName withAddress:(NSString*)strAddr{
