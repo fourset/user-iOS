@@ -18,6 +18,8 @@
     GMSMapView *mapView;
     
     CLLocation *currentUserLocation;
+    float zoom;
+    
 }
 
 @property (nonatomic, weak) IBOutlet UIView *mapContainerView;
@@ -37,6 +39,7 @@
     
     //Add maps
     [self addGoogleMap];
+    zoom = 16.0;
     
     //Configure search field
     [self configureSearchUI];
@@ -99,6 +102,7 @@
     mapView.delegate = self;
     
     //Show location
+    [self updateSearchField];
     if (mapView.myLocation) {
         currentUserLocation = mapView.myLocation;
         camera = [GMSCameraPosition cameraWithLatitude:currentUserLocation.coordinate.latitude
@@ -108,12 +112,25 @@
         [mapView animateToCameraPosition:camera];
     }
     
-    
-    
     //    mapView.mapType = kGMSTypeSatellite;
     [mapView animateToViewingAngle:20];
     
     [self.mapContainerView addSubview:mapView];
+    
+}
+
+- (void) updateSearchField
+{
+    [_searchTextField setText:@"Getting the localtion..."];
+    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+    [ceo reverseGeocodeLocation:currentUserLocation
+              completionHandler:^(NSArray *placemarks, NSError *error) {
+                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                  [_searchTextField setText:locatedAt];
+              }
+     ];
+
 }
 
 - (void)addPins:(float)lat andLng:(float)lng andName:(NSString*)strName withAddress:(NSString*)strAddr{
@@ -130,11 +147,24 @@
     marker.map = mapView;
 }
 
-
 #pragma mark - User Interaction
 
 - (IBAction)clickOnMenu:(id)sender{
     [[SlideNavigationController sharedInstance] toggleLeftMenu];
+}
+
+- (IBAction)tapCurrentLocation:(UIButton *)sender {
+    [self updateSearchField];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:currentUserLocation.coordinate.latitude
+                                                            longitude:currentUserLocation.coordinate.longitude
+                                                                 zoom:zoom];
+    currentUserLocation = mapView.myLocation;
+    camera = [GMSCameraPosition cameraWithLatitude:currentUserLocation.coordinate.latitude
+                                         longitude:currentUserLocation.coordinate.longitude
+                                              zoom:zoom];
+    
+    [mapView animateToCameraPosition:camera];
+    
 }
 
 #pragma mark - Slide Menu
