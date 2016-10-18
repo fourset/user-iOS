@@ -169,7 +169,7 @@
 			children = (
 				C8B18EC21D8CEF41005FA4A0 /* AppData */,
 				C8DCC2EB1D8C0A5600E45833 /* ViewControllers */,
-				C8DCC2E81D8C02A700E45833 /* Assests */,
+				C8DCC2E81D8C02A700E45833 /* Assets */,
 				C8DCC2E01D8BFBBD00E45833 /* AppDelegate */,
 				C8DCC2D21D8BF90400E45833 /* Main.storyboard */,
 				C8DCC2C91D8BF90400E45833 /* Supporting Files */,
@@ -205,7 +205,7 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-		C8DCC2E81D8C02A700E45833 /* Assests */ = {
+		C8DCC2E81D8C02A700E45833 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				C8DCC2E11D8C02A600E45833 /* fonts */,
@@ -213,7 +213,7 @@
 				C8DCC2D51D8BF90400E45833 /* Assets.xcassets */,
 				C8DCC2D71D8BF90400E45833 /* LaunchScreen.storyboard */,
 			);
-			name = Assests;
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		C8DCC2EB1D8C0A5600E45833 /* ViewControllers */ = {
@@ -265,12 +265,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8DCC2DD1D8BF90400E45833 /* Build configuration list for PBXNativeTarget "Fourset" */;
 			buildPhases = (
-				07D1E6AC791EF8EF84EC1724 /* 📦 Check Pods Manifest.lock */,
+				07D1E6AC791EF8EF84EC1724 /* [CP] Check Pods Manifest.lock */,
 				C8DCC2C21D8BF90300E45833 /* Sources */,
 				C8DCC2C31D8BF90300E45833 /* Frameworks */,
 				C8DCC2C41D8BF90300E45833 /* Resources */,
-				8C526FAAD0C89CA5A428B823 /* 📦 Embed Pods Frameworks */,
-				3824355001D6422CA78F2EBD /* 📦 Copy Pods Resources */,
+				8C526FAAD0C89CA5A428B823 /* [CP] Embed Pods Frameworks */,
+				3824355001D6422CA78F2EBD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -292,6 +292,8 @@
 				TargetAttributes = {
 					C8DCC2C51D8BF90300E45833 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = CD6GQ2Y7J4;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -331,29 +333,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07D1E6AC791EF8EF84EC1724 /* 📦 Check Pods Manifest.lock */ = {
+		07D1E6AC791EF8EF84EC1724 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		3824355001D6422CA78F2EBD /* 📦 Copy Pods Resources */ = {
+		3824355001D6422CA78F2EBD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,14 +363,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fourset/Pods-Fourset-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C526FAAD0C89CA5A428B823 /* 📦 Embed Pods Frameworks */ = {
+		8C526FAAD0C89CA5A428B823 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,10 +509,12 @@
 			baseConfigurationReference = 1FDEA3E5F6B4A887EC2EB3DE /* Pods-Fourset.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CD6GQ2Y7J4;
 				INFOPLIST_FILE = Fourset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryan.fourset.Fourset;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryan.fourset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -519,10 +523,12 @@
 			baseConfigurationReference = A63EEB0BD929DB334634D20A /* Pods-Fourset.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CD6GQ2Y7J4;
 				INFOPLIST_FILE = Fourset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ryan.fourset.Fourset;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryan.fourset;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

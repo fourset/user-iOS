@@ -3,7 +3,7 @@
 //  Fourset
 //
 //  Created by Expert Software Dev on 9/8/16.
-//  Copyright © 2016 Fourset Inc. All rights reserved.
+//  Copyright © 2016 Fourset Pty Ltd. All rights reserved.
 //
 
 #import "AppDelegate.h"
