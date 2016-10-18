@@ -19,6 +19,7 @@
     
     CLLocation *currentUserLocation;
     float zoom;
+    UIImageView *mapPin;
     
 }
 
@@ -65,17 +66,11 @@
     [super viewDidLayoutSubviews];
     
     mapView.frame = self.mapContainerView.bounds;
+    mapPin.center = CGPointMake(self.mapContainerView.frame.size.width/2.0, self.mapContainerView.frame.size.height/2.0 - mapPin.frame.size.height / 2.0);
+
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - UI Setup
 - (void)configureSearchUI{
@@ -100,6 +95,7 @@
     mapView = [GMSMapView mapWithFrame:CGRectMake(0, 0, 100, 100) camera:camera];
     mapView.myLocationEnabled = YES;
     mapView.delegate = self;
+    mapView.settings.allowScrollGesturesDuringRotateOrZoom = NO;
     
     //Show location
     [self updateSearchField];
@@ -117,7 +113,11 @@
     
     [self.mapContainerView addSubview:mapView];
     
+    mapPin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_pin"]];
+    [self.mapContainerView addSubview:mapPin];
+    
 }
+
 
 - (void) updateSearchField
 {
@@ -133,7 +133,7 @@
 
     [[GMSGeocoder geocoder] reverseGeocodeCoordinate:currentUserLocation.coordinate completionHandler:
      ^(GMSReverseGeocodeResponse *response, NSError *error){
-         NSString * address  = [response.firstResult.lines componentsJoinedByString:@", "];
+         NSString * address  = response.firstResult.thoroughfare;
          [_searchTextField setText:address];
          
      }];
@@ -179,5 +179,18 @@
 {
     return YES;
 }
+
+#pragma mark - Map View
+
+
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position{
+    
+    [[GMSGeocoder geocoder] reverseGeocodeCoordinate:position.target completionHandler:
+     ^(GMSReverseGeocodeResponse *response, NSError *error){
+         NSString * address  = response.firstResult.thoroughfare;
+         [_searchTextField setText:address];
+     }];
+}
+
 
 @end
