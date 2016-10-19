@@ -40,21 +40,10 @@
     
     //Add maps
     [self addGoogleMap];
-    zoom = 16.0;
+    zoom = 15.0;
     
     //Configure search field
     [self configureSearchUI];
-    
-    //Add some testing points
-    [self addPins:19.4524
-           andLng:-99.1358
-          andName:@"Drink"
-      withAddress:@"New Drink Pub"];
-    
-    [self addPins:37.784459
-           andLng:-122.407127
-          andName:@"Coffee"
-      withAddress:@"New Coffee Pub"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,7 +76,7 @@
     // Create a GMSCameraPosition that tells the map to display the
     // coordinate -33.86,151.20 at zoom level 6.
     
-    float zoom = 16.;
+    float zoom = 15.;
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:currentUserLocation.coordinate.latitude
                                                             longitude:currentUserLocation.coordinate.longitude
                                                                  zoom:zoom];
@@ -109,7 +98,7 @@
     }
     
     //    mapView.mapType = kGMSTypeSatellite;
-    [mapView animateToViewingAngle:20];
+    [mapView animateToViewingAngle:0];
     
     [self.mapContainerView addSubview:mapView];
     
